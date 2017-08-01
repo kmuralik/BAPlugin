@@ -1,0 +1,39 @@
+{
+	"manifest_version"	: 2,
+
+	"name"				: "CAGIS DXI Snippet 2",
+	"description"		: "This extension adds the Browser Agent snippet to webpages. GIS Tools and Automation Team",
+	"version"			: "0.1.1",
+
+	"browser_action"	: {
+		"default_icon"	: "CA-logo-inactive.png",
+		"default_popup"	: "popup.html",
+		"default_title"	: "CA GIS"
+	},
+	
+	"permissions"		: [
+		"storage",
+		"tabs",
+		"activeTab",
+		"cookies",
+		"http://*/*",
+		"https://*/*",
+		"*://*/*"
+	],
+	
+	"background": {
+		"scripts"		: ["background.js"]
+	},
+	
+	"content_scripts"	: [
+		{
+			"matches"	: ["http://*/*","https://*/*"],		
+			"run_at"	:"document_end",
+			"js"		: ["jquery-3.2.1.min.js","snippetparams.js","baplugin_cs.js"]
+		}
+	],
+	
+	"web_accessible_resources": [
+		"PFMKey.js"
+	]
+}
